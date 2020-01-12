@@ -3,35 +3,111 @@ body {
     overflow: hidden;
 }
 
-.container{
+.main{
     display: flex;
     height: 100vh;
     width: 100vw;
     align-items: center;
     justify-content:space-around;
-    background-color: cadetblue;
+    background-color: #49708a;
+}
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 500px;
+    width: 960px;
+    background-color: white;
 }
 
 .login-view{
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 500px;
-    width: 960px;
+    font-family: 'PT Sans Narrow', sans-serif;
     background-color: white;
+}
+
+.login-logo{
+    height: 200px;
+    width: 400px;
+    margin-bottom: 20px;
+    background-image: url('./img/taulia-vector-logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .pass-input{
     display: flex;
-    height: 30px;
-    width: 600px;
-}
-
-.pass-input input{
-    height: 100%;
-    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
     border: 1px solid lightgray;
     border-radius: 4px;
+    height: 36px;
+    width: auto;
+}
+
+.pass-label{
+    position: absolute;
+    top: -26px;
+}
+
+#pass-field{
+    height: 80%;
+    width: 480px;
+    margin: 0 0 2px 6px;
+    border: none;
     outline: none;
-    -webkit-appearance: none;
+}
+
+#show-radio{
+    margin-left: 10px;
+    margin-right: 6px;
+    height: 12px;
+    width: 12px;
+    border-radius: 2px;
+    border: 1px solid rgba(99, 137, 142, 0.34);
+    background-color: white;
+}
+
+.pass-options{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 80px;
+    border-left: 1px solid lightgray;
+    background-color: rgba(165, 223, 228, 0.18);
+}
+
+.login-requirements{
+    display: flex;
+    margin-top: 10px;
+    width: 570px;
+    height: 100px;
+    background-color: white;
+}
+
+.requirement{
+    display: flex;
+    align-items: center;
+}
+
+.requirements-col{
+    display: flex;
+    flex-direction: column;
+}
+
+.requirements-col:last-child{
+    margin-left: 20px;
+}
+
+.bullet{
+    height: 8px;
+    width: 8px;
+    margin-right: 8px;
+    background-image: url('./img/taulia-bullet.png');
+    background-size: contain;
+    background-repeat: no-repeat;
 }

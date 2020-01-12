@@ -1,18 +1,24 @@
 import React from 'react';
+import Requirements from "./Requirements.jsx";
 
 const Login = (props) => {
 
     return (
-        <div className={'login-view'}>
-            <span className={'pass-label'}>Password:</span>
-            <div className={'pass-input'}>
-                <form onSubmit={props.handleSubmit}>
-                    <input type={"password"} name={"auth"} onChange={props.handleChange}/>
-                </form>
+            <div className={'login-view'}>
+                <div className={'login-logo'}></div>
+            <form onSubmit={props.handleSubmit}>
+                <div className={'pass-input'}>
+                    <span className={'pass-label'}>Password</span>
+                    <input type={"password"} id={"pass-field"} name={"auth"} onChange={props.handleChange}/>
+                    <div className={"pass-options"}>
+                        <div id={'show-radio'}></div><span>Show</span>
+                    </div>
+                </div>
+            </form>
+            <Requirements/>
             </div>
-        </div>
     )
-
 };
 
 export default Login;
+
