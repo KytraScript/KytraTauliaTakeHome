@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 3880
 
 # Run npm start when the container launches
-CMD ["node", "server.js"]
+CMD ["node", "server/server.js"]
