@@ -1,5 +1,6 @@
 import React from 'react';
 import Requirements from "./Requirements.jsx";
+import Field from "./Field.jsx"
 
 const Login = (props) => {
 
@@ -7,19 +8,15 @@ const Login = (props) => {
         <div className={'login-view'}>
             <div className={'login-logo'}></div>
             <form onSubmit={props.handleSubmit}>
-                <div className={'pass-input'}>
-                    <span className={'pass-label'}>Password</span>
-                    <input type={"password"} id={"pass-field"} name={"auth"} onChange={props.handleChange}/>
-                    <div className={"pass-options"}>
-                        <div id={'show-radio'} onClick={props.toggleShow}></div>
-                        <span>Show</span>
-                    </div>
-                </div>
+                <Field toggleShow={props.toggleShow} visiblePass={props.visiblePass} handleChange={props.handleChange}/>
             </form>
-            <Requirements/>
+            <Requirements lowerValid={props.lowerValid} upperValid={props.upperValid} emailValid={props.emailValid}
+                          lengthValid={props.lengthValid} numberValid={props.numberValid}/>
         </div>
     )
 };
 
 export default Login;
+
+
 

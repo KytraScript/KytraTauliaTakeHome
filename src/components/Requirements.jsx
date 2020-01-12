@@ -1,32 +1,22 @@
 import React from 'react';
+import LengthValid from './LengthValid.jsx';
+import LowerValid from './LowerValid.jsx';
+import EmailValid from './EmailValid.jsx';
+import UpperValid from './UpperValid.jsx';
+import NumberValid from './NumberValid.jsx';
 
-const Requirements = () => {
+const Requirements = (props) => {
 
     return (
         <div className={'login-requirements'}>
             <div className={'requirements-col'}>
-                <div className={'requirement'} id={'char-count'}>
-                    <div className={'bullet'}></div>
-                    8-72 Characters
-                </div>
-                <div className={'requirement'} id={'char-lower-case'}>
-                    <div className={'bullet'}></div>
-                    1 Lowercase Character
-                </div>
-                <div className={'requirement strike'} id={'char-email'}>
-                    <div className={'bullet'}></div>
-                    Should Not Match Your Email Address
-                </div>
+                <LengthValid lengthValid={props.lengthValid}/>
+                <LowerValid lowerValid={props.lowerValid}/>
+                <EmailValid emailValid={props.emailValid}/>
             </div>
             <div className={'requirements-col'}>
-                <div className={'requirement'} id={'char-upper-case'}>
-                    <div className={'bullet'}></div>
-                    1 Uppercase Character
-                </div>
-                <div className={'requirement'} id={'char-number'}>
-                    <div className={'bullet'}></div>
-                    1 Number
-                </div>
+                <UpperValid upperValid={props.upperValid}/>
+                <NumberValid numberValid={props.numberValid}/>
             </div>
         </div>
     )

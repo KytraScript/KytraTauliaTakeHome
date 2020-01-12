@@ -12,7 +12,13 @@ class App extends React.Component {
         this.state = {
             userInput: '',
             userEmail: '',
-            username: ''
+            username: '',
+            visiblePass: false,
+            lowerValid: false,
+            upperValid: false,
+            numberValid: false,
+            lengthValid: false,
+            emailValid: true,
         };
 
         this.extractEmail = this.extractEmail.bind(this);
@@ -69,50 +75,55 @@ class App extends React.Component {
 
     validatePassword(str) {
         let currInput = str;
-        let lowerValid = document.getElementById('char-lower-case');
-        let upperValid = document.getElementById('char-upper-case');
-        let numberValid = document.getElementById('char-number');
-        let lengthValid = document.getElementById('char-count');
-        let matchValid = document.getElementById('char-email');
 
         if (this.checkLowerCase(currInput)) {
-            if (!lowerValid.classList.contains('strike')) {
-                lowerValid.classList.add('strike');
-            }
+            this.setState({
+                lowerValid: true
+            })
         } else {
-            lowerValid.classList.remove('strike');
+            this.setState({
+                lowerValid: false
+            })
         }
 
         if (this.checkUpperCase(currInput)) {
-            if (!upperValid.classList.contains('strike')) {
-                upperValid.classList.add('strike');
-            }
+            this.setState({
+                upperValid: true
+            })
         } else {
-            upperValid.classList.remove('strike');
+            this.setState({
+                upperValid: false
+            })
         }
 
         if (this.checkNumbers(currInput)) {
-            if (!numberValid.classList.contains('strike')) {
-                numberValid.classList.add('strike');
-            }
+            this.setState({
+                numberValid: true
+            })
         } else {
-            numberValid.classList.remove('strike');
+            this.setState({
+                numberValid: false
+            })
         }
 
         if (this.checkLength(currInput)) {
-            if (!lengthValid.classList.contains('strike')) {
-                lengthValid.classList.add('strike');
-            }
+            this.setState({
+                lengthValid: true
+            })
         } else {
-            lengthValid.classList.remove('strike');
+            this.setState({
+                lengthValid: false
+            })
         }
 
         if (!this.checkEmailMatch(currInput)) {
-            if (!matchValid.classList.contains('strike')) {
-                matchValid.classList.add('strike');
-            }
+            this.setState({
+                emailValid: true
+            })
         } else {
-            matchValid.classList.remove('strike');
+            this.setState({
+                emailValid: false
+            })
         }
     }
 
@@ -137,14 +148,14 @@ class App extends React.Component {
     }
 
     toggleShowPassword() {
-        let passField = document.getElementById('pass-field');
-        let checkBox = document.getElementById('show-radio');
-        if (passField.type === 'password' && !checkBox.classList.contains('options-selected')) {
-            passField.type = 'text';
-            checkBox.classList.add('options-selected');
-        } else if (passField.type === 'text' && checkBox.classList.contains('options-selected')) {
-            passField.type = 'password';
-            checkBox.classList.remove('options-selected');
+        if(!this.state.visiblePass){
+            this.setState({
+                visiblePass: true
+            })
+        } else if(this.state.visiblePass){
+            this.setState({
+                visiblePass: false
+            })
         }
     }
 
@@ -153,7 +164,11 @@ class App extends React.Component {
             <div className={'main'}>
                 <div className={'container'}>
                     <Login toggleShow={this.toggleShowPassword} handleChange={this.handleChange}
-                           handleSubmit={this.handleSubmit}/>
+                           handleSubmit={this.handleSubmit} lowerValid={this.state.lowerValid}
+                           upperValid={this.state.upperValid}
+                           numberValid={this.state.numberValid} lengthValid={this.state.lengthValid}
+                           emailValid={this.state.emailValid}
+                           visiblePass={this.state.visiblePass}/>
                 </div>
             </div>
         )
